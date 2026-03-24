@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Orbitron:wght@400;700;900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-digital: "Orbitron", sans-serif;
+}
+
+@layer base {
+  body {
+    @apply font-mono bg-[#050505] text-white overflow-hidden;
+  }
+}
+
+@layer utilities {
+  .font-digital {
+    font-family: var(--font-digital);
+  }
+
+  .glitch-text {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .glitch-text::before,
+  .glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #050505;
+  }
+  
+  .glitch-text::before {
+    left: 3px;
+    text-shadow: -2px 0 #f0f;
+    animation: glitch-anim-1 2s infinite linear alternate-reverse;
+    z-index: -1;
+  }
+  
+  .glitch-text::after {
+    left: -3px;
+    text-shadow: -2px 0 #0ff;
+    animation: glitch-anim-2 3s infinite linear alternate-reverse;
+    z-index: -2;
+  }
+
+  @keyframes glitch-anim-1 {
+    0% { clip-path: inset(20% 0 80% 0); }
+    20% { clip-path: inset(60% 0 10% 0); }
+    40% { clip-path: inset(40% 0 50% 0); }
+    60% { clip-path: inset(80% 0 5% 0); }
+    80% { clip-path: inset(10% 0 70% 0); }
+    100% { clip-path: inset(30% 0 40% 0); }
+  }
+
+  @keyframes glitch-anim-2 {
+    0% { clip-path: inset(10% 0 60% 0); }
+    20% { clip-path: inset(30% 0 20% 0); }
+    40% { clip-path: inset(70% 0 10% 0); }
+    60% { clip-path: inset(20% 0 50% 0); }
+    80% { clip-path: inset(50% 0 30% 0); }
+    100% { clip-path: inset(5% 0 80% 0); }
+  }
+
+  .neon-border-cyan {
+
+    border: 1px solid #0ff;
+    box-shadow: 0 0 8px rgba(0, 255, 255, 0.4), inset 0 0 8px rgba(0, 255, 255, 0.2);
+  }
+  
+  .neon-border-magenta {
+    border: 1px solid #f0f;
+    box-shadow: 0 0 8px rgba(255, 0, 255, 0.4), inset 0 0 8px rgba(255, 0, 255, 0.2);
+  }
+
+  .neon-text-cyan {
+    color: #0ff;
+    text-shadow: 0 0 8px rgba(0, 255, 255, 0.6);
+  }
+
+  .neon-text-magenta {
+    color: #f0f;
+    text-shadow: 0 0 8px rgba(255, 0, 255, 0.6);
+  }
+
+  .neon-bg-lime {
+    background-color: #39ff14;
+    box-shadow: 0 0 10px rgba(57, 255, 20, 0.8);
+  }
+
+  .neon-bg-cyan {
+    background-color: #0ff;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+  }
+  
+  .neon-bg-red {
+    background-color: #ff003c;
+    box-shadow: 0 0 10px rgba(255, 0, 60, 0.8);
+  }
+}
